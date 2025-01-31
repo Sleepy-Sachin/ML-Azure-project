@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Delay Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Flight Delay Prediction</h1>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="flight_number">Flight Number:</label>
+                <input type="text" id="flight_number" name="flight_number" required>
+            </div>
+            <div class="form-group">
+                <label for="scheduled_arrival">Scheduled Arrival Time (HHMM):</label>
+                <input type="text" id="scheduled_arrival" name="scheduled_arrival" required>
+            </div>
+            <div class="form-group">
+                <label for="scheduled_departure">Scheduled Departure Time (HHMM):</label>
+                <input type="text" id="scheduled_departure" name="scheduled_departure" required>
+            </div>
+            <div class="form-group">
+                <label for="actual_departure">Actual Departure Time (HHMM):</label>
+                <input type="text" id="actual_departure" name="actual_departure" required>
+            </div>
+            <div class="form-group">
+                <label for="month">Month (1-12):</label>
+                <input type="number" id="month" name="month" required>
+            </div>
+            <div class="form-group">
+                <label for="origin">Origin:</label>
+                <input type="text" id="origin" name="origin" required>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <input type="text" id="destination" name="destination" required>
+            </div>
+            <div class="form-group">
+                <label for="weather">Weather Conditions (adverse/normal):</label>
+                <input type="text" id="weather" name="weather" required>
+            </div>
+            <div class="form-group">
+                <label for="air_traffic_control">Air Traffic Control (congested/normal):</label>
+                <input type="text" id="air_traffic_control" name="air_traffic_control" required>
+            </div>
+            <div class="form-group">
+                <label for="airline_operations">Airline Operations (issue/free):</label>
+                <input type="text" id="airline_operations" name="airline_operations" required>
+            </div>
+            <div class="form-group">
+                <label for="airport_operations">Airport Operations (issue/free):</label>
+                <input type="text" id="airport_operations" name="airport_operations" required>
+            </div>
+            <div class="form-group">
+                <label for="passenger_related">Passenger Related Issues (yes/no):</label>
+                <input type="text" id="passenger_related" name="passenger_related" required>
+            </div>
+            <div class="form-group">
+                <label for="external_factors">External Factors (yes/no):</label>
+                <input type="text" id="external_factors" name="external_factors" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
